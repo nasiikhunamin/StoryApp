@@ -1,0 +1,17 @@
+{
+  "appTitle": "SnapVerse",
+  "buttonLogin": "Login",
+  "buttonRegister": "Register",
+  "buttonUpload": "Upload",
+  "buttonReload": "Refresh",
+  "fieldDescription": "Caption",
+  "fieldName": "Name",
+  "fieldEmail": "Email",
+  "fieldPassword": "Password",
+  "titleAddStory": "Add Story",
+  "titleListStory": "List Story",
+  "titleDetailStory": "Detail Story",
+  "createAccount": "Don't have a account?",
+  "createStory": "Create Story",
+  "selectImage": "Select Image"
+}

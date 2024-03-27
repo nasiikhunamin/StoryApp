@@ -1,0 +1,26 @@
+{
+  "appTitle": "SnapVerse",
+  "@appTitle": {
+    "description": "Do not translate."
+  },
+  "buttonLogin": "Masuk",
+  "buttonRegister": "Daftar",
+  "buttonUpload": "Unggah",
+  "buttonReload": "Muat ulang",
+  "fieldDescription": "Keterangan",
+  "fieldName": "Nama",
+  "fieldEmail": "Email",
+  "@fieldEmail": {
+    "description": "Do not translate."
+  },
+  "fieldPassword": "Password",
+  "@fieldPassword": {
+    "description": "Do not translate."
+  },
+  "titleAddStory": "Tambah Cerita",
+  "titleListStory": "Daftar Cerita",
+  "titleDetailStory": "Detail Cerita",
+  "createAccount": "Buat akun untuk masuk di aplikasi ini",
+  "createStory": "Buat Cerita",
+  "selectImage": "Pilih Gambar"
+}

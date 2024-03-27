@@ -1,0 +1,17 @@
+{
+  "appTitle": "SnapVerse",
+  "buttonLogin": "入力してください",
+  "buttonRegister": "リスト",
+  "buttonUpload": "アップロード",
+  "buttonReload": "リロード",
+  "fieldDescription": "説明",
+  "fieldName": "名前",
+  "fieldEmail": "Email",
+  "fieldPassword": "Password",
+  "titleAddStory": "ストーリーを追加",
+  "titleListStory": "ストーリー一覧",
+  "titleDetailStory": "ストーリー詳細",
+  "createAccount": "すでにアカウントをお持ちですか？",
+  "createStory": "物語をでっち上げる",
+  "selectImage": "画像を選択"
+}
