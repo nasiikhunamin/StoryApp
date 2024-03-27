@@ -20,7 +20,9 @@
   "titleAddStory": "Tambah Cerita",
   "titleListStory": "Daftar Cerita",
   "titleDetailStory": "Detail Cerita",
-  "createAccount": "Buat akun untuk masuk di aplikasi ini",
+  "createAccount": "Belum punya akun?",
   "createStory": "Buat Cerita",
-  "selectImage": "Pilih Gambar"
+  "selectImage": "Pilih Gambar",
+  "emailValidator": "Format email tidak valid",
+  "passwordValidator": "Password harus minimal 8 karakter"
 }

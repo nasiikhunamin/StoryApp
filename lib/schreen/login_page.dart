@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storyapp/data/models/requests/login_requests.dart';
 import 'package:storyapp/provider/login_provider.dart';
-import 'package:storyapp/utils/form_validator.dart';
 import 'package:storyapp/utils/helper.dart';
 import 'package:storyapp/utils/result_state.dart';
 import 'package:storyapp/widget/costume_button.dart';
 import 'package:storyapp/export.dart';
+import 'package:validators/validators.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback onLoginSucces;
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextButton(
                     onPressed: widget.onRegisterClicked,
                     child: Text(
-                      AppLocalizations.of(context)!.createAccount,
+                      AppLocalizations.of(context)!.buttonRegister,
                       style: const TextStyle(color: Color(0xff32323C)),
                     ),
                   ),
@@ -180,4 +180,12 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
+
+  String? validateEmail(String? value) => isEmail(value.toString())
+      ? AppLocalizations.of(context)!.emailValidator
+      : null;
+
+  String? validatePassword(String? value) => (value!.length < 8)
+      ? AppLocalizations.of(context)!.passwordValidator
+      : null;
 }

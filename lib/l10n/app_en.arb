@@ -13,5 +13,7 @@
   "titleDetailStory": "Detail Story",
   "createAccount": "Don't have a account?",
   "createStory": "Create Story",
-  "selectImage": "Select Image"
+  "selectImage": "Select Image",
+  "emailValidator": "Invalid email format",
+  "passwordValidator": "Password must contains minimum 8 characters"
 }

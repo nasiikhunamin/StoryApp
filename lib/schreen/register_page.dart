@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:storyapp/data/models/requests/register_requests.dart';
 import 'package:storyapp/export.dart';
 import 'package:storyapp/provider/register_provider.dart';
-import 'package:storyapp/utils/form_validator.dart';
 import 'package:storyapp/utils/helper.dart';
 import 'package:storyapp/utils/result_state.dart';
 import 'package:storyapp/widget/costume_button.dart';
+import 'package:validators/validators.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback onRegister;
@@ -204,4 +204,12 @@ class _RegisterPageState extends State<RegisterPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
+
+  String? validateEmail(String? value) => isEmail(value.toString())
+      ? AppLocalizations.of(context)!.emailValidator
+      : null;
+
+  String? validatePassword(String? value) => (value!.length < 8)
+      ? AppLocalizations.of(context)!.passwordValidator
+      : null;
 }

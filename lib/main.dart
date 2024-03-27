@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<LocalizationProvider>(
           create: (context) => LocalizationProvider(),
-        )
+        ),
       ],
       builder: (context, child) {
         final localizationProvider = Provider.of<LocalizationProvider>(context);
