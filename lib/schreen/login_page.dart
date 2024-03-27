@@ -6,6 +6,7 @@ import 'package:storyapp/utils/form_validator.dart';
 import 'package:storyapp/utils/helper.dart';
 import 'package:storyapp/utils/result_state.dart';
 import 'package:storyapp/widget/costume_button.dart';
+import 'package:storyapp/export.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback onLoginSucces;
@@ -46,8 +47,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 50),
               Text(
-                'Login',
-                style: TextStyle(fontSize: 28),
+                AppLocalizations.of(context)!.buttonLogin,
+                style: const TextStyle(fontSize: 28),
               ),
               Padding(
                 padding:
@@ -62,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: "Email",
+                          labelText: AppLocalizations.of(context)!.fieldEmail,
                           labelStyle: const TextStyle(
                             color: Color(0xffBDBDBD),
                           ),
@@ -89,7 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: "Password",
+                          labelText:
+                              AppLocalizations.of(context)!.fieldPassword,
                           labelStyle: const TextStyle(
                             color: Color(0xffBDBDBD),
                           ),
@@ -121,24 +123,25 @@ class _LoginPageState extends State<LoginPage> {
                   return CustomButton(
                     isLoading: (provider.loginState == ResultState.loading),
                     onPressed: () => _onLoginPressed(provider),
-                    text: 'Login',
+                    text: AppLocalizations.of(context)!.buttonLogin,
                   );
                 },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Don\'t have a account?',
-                    style: TextStyle(
+                  Text(
+                    // 'Don\'t have a account?',
+                    AppLocalizations.of(context)!.createAccount,
+                    style: const TextStyle(
                         color: Color.fromARGB(237, 146, 143, 143),
                         fontWeight: FontWeight.w600),
                   ),
                   TextButton(
                     onPressed: widget.onRegisterClicked,
-                    child: const Text(
-                      'SignUp',
-                      style: TextStyle(color: Color(0xff32323C)),
+                    child: Text(
+                      AppLocalizations.of(context)!.createAccount,
+                      style: const TextStyle(color: Color(0xff32323C)),
                     ),
                   ),
                 ],

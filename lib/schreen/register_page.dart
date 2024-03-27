@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storyapp/data/models/requests/register_requests.dart';
+import 'package:storyapp/export.dart';
 import 'package:storyapp/provider/register_provider.dart';
 import 'package:storyapp/utils/form_validator.dart';
 import 'package:storyapp/utils/helper.dart';
@@ -51,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Text("Register"),
+                Text(AppLocalizations.of(context)!.buttonRegister),
                 const SizedBox(height: 10),
                 Form(
                   key: _formKey,
@@ -63,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: "Nama",
+                          labelText: AppLocalizations.of(context)!.fieldName,
                           labelStyle: const TextStyle(
                             color: Color(0xffBDBDBD),
                           ),
@@ -88,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: "Email",
+                          labelText: AppLocalizations.of(context)!.fieldEmail,
                           labelStyle: const TextStyle(
                             color: Color(0xffBDBDBD),
                           ),
@@ -115,7 +116,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: "Password",
+                          labelText:
+                              AppLocalizations.of(context)!.fieldPassword,
                           labelStyle: const TextStyle(
                             color: Color(0xffBDBDBD),
                           ),
@@ -146,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     return CustomButton(
                       isLoading: provider.registerState == ResultState.loading,
                       onPressed: () => _onRegisterClicked(provider),
-                      text: "Register",
+                      text: AppLocalizations.of(context)!.buttonRegister,
                     );
                   },
                 ),

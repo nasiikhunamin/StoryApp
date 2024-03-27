@@ -80,7 +80,7 @@ class DetailStoryPage extends StatelessWidget {
             const SizedBox(height: 16, width: double.maxFinite),
             const SizedBox(height: 8),
             Text(
-              story.description ?? "-",
+              story.description ?? "",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ],
