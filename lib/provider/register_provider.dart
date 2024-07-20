@@ -22,10 +22,10 @@ class RegisterProvider extends ChangeNotifier {
       if (registerResult.error != true) {
         _registerState = ResultState.hasData;
 
-        _registerMessage = registerResult.message ?? "Akun Berhasil Dibuat";
+        _registerMessage = "${registerResult.message}";
       } else {
         _registerState = ResultState.noData;
-        _registerMessage = registerResult.message ?? "Gagal Membuat Akun";
+        _registerMessage = "${registerResult.message}";
       }
     } catch (e) {
       _registerState = ResultState.error;

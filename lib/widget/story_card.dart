@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:storyapp/data/models/detail_story.dart';
+import 'package:storyapp/data/models/story.dart';
 
-class StoryBullets extends StatelessWidget {
+class StoryCard extends StatelessWidget {
   final Story story;
   final VoidCallback onStoryClicked;
-  const StoryBullets({
+  const StoryCard({
     super.key,
     required this.story,
     required this.onStoryClicked,
@@ -25,12 +25,13 @@ class StoryBullets extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(story.photoUrl ?? ""),
-                      fit: BoxFit.cover,
-                      opacity: 0.5,
-                    )),
+                  borderRadius: BorderRadius.circular(12),
+                  image: DecorationImage(
+                    image: NetworkImage(story.photoUrl ?? ""),
+                    fit: BoxFit.cover,
+                    opacity: 0.5,
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),

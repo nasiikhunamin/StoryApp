@@ -11,7 +11,28 @@
   "titleAddStory": "ストーリーを追加",
   "titleListStory": "ストーリー一覧",
   "titleDetailStory": "ストーリー詳細",
-  "createAccount": "すでにアカウントをお持ちですか？",
   "createStory": "物語をでっち上げる",
-  "selectImage": "画像を選択"
+  "selectImage": "画像を選択",
+  "addLocationButton": "場所を追加",
+  "locationLatLng": "選択した場所: ({lat};{lng})",
+  "@locationLatLng": {
+    "placeholders": {
+      "lat": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      },
+      "lng": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      }
+    }
+  },
+  "permissionAllowLocation": "現在の位置情報機能を有効にするための位置情報リクエストを許可します",
+  "permissionDeniedLocation": "位置情報リクエストは拒否されました。設定で手動で有効にしてください"
 }

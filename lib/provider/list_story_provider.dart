@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:storyapp/data/api/api_services.dart';
-import 'package:storyapp/data/models/detail_story.dart';
+import 'package:storyapp/data/models/story.dart';
 import 'package:storyapp/utils/result_state.dart';
 
 class ListStoryProvider extends ChangeNotifier {
@@ -21,22 +21,29 @@ class ListStoryProvider extends ChangeNotifier {
   final List<Story> _story = [];
   List<Story> get story => _story;
 
-  Future<dynamic> getStory() async {
+  int page = 1;
+  int size = 30;
+
+  Future<dynamic> getStory({bool isRefresh = false}) async {
     try {
       _state = ResultState.loading;
       notifyListeners();
 
-      final storyResult = await apiService.getAllStories();
+      if (isRefresh) {
+        page = 1;
+        _story.clear();
+      }
+
+      final storyResult = await apiService.getAllStories(page, size);
 
       if (storyResult.listStory?.isNotEmpty == true) {
         _state = ResultState.hasData;
-        _story.clear();
-        _story.addAll(storyResult.listStory ?? List.empty());
-        _message = storyResult.message ?? "Get Story Succes";
+        _story.addAll(storyResult.listStory!);
+        _message = storyResult.message ?? "Get story succes";
+        page++;
       } else {
         _state = ResultState.noData;
-
-        _message = storyResult.message ?? "Get Story Failed";
+        _message = storyResult.message ?? "Get story failed";
       }
     } on SocketException {
       _state = ResultState.error;

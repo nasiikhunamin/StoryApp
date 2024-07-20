@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:storyapp/data/api/api_services.dart';
-import 'package:storyapp/data/models/detail_story.dart';
+import 'package:storyapp/data/models/story.dart';
 import 'package:storyapp/utils/result_state.dart';
 
 class DetailStoryProvider extends ChangeNotifier {

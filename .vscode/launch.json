@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configuration": [
+        {
+            "name": "SnapVerse (free)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_free.dart",
+            "args": [
+                "-t",
+                "lib/main_free.dart"
+            ]
+        },
+        {
+            "name": "SnapVerse (Paid)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_paid.dart",
+            "args": [
+                "-t",
+                "lib/main_paid.dart"
+            ]
+        }
+    ],
+}

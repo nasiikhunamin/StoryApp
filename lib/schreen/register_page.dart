@@ -6,6 +6,7 @@ import 'package:storyapp/provider/register_provider.dart';
 import 'package:storyapp/utils/helper.dart';
 import 'package:storyapp/utils/result_state.dart';
 import 'package:storyapp/widget/costume_button.dart';
+import 'package:storyapp/widget/snackbar_custom.dart';
 import 'package:validators/validators.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -52,7 +53,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text(AppLocalizations.of(context)!.buttonRegister),
+                const Text(
+                  "Register",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
                 const SizedBox(height: 10),
                 Form(
                   key: _formKey,
@@ -148,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     return CustomButton(
                       isLoading: provider.registerState == ResultState.loading,
                       onPressed: () => _onRegisterClicked(provider),
-                      text: AppLocalizations.of(context)!.buttonRegister,
+                      text: "SignUp",
                     );
                   },
                 ),
@@ -169,30 +175,12 @@ class _RegisterPageState extends State<RegisterPage> {
   _handleRegister(RegisterProvider registerProvider) {
     switch (registerProvider.registerState) {
       case ResultState.hasData:
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  registerProvider.registerMessage,
-                ),
-              ),
-            );
-          },
-        );
+        showCustomSnackbar(context, registerProvider.registerMessage);
         afterBuild(() => widget.onRegister());
         break;
       case ResultState.noData:
       case ResultState.error:
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(registerProvider.registerMessage),
-              ),
-            );
-          },
-        );
+        showCustomSnackbar(context, registerProvider.registerMessage);
         break;
       default:
         break;
@@ -205,11 +193,10 @@ class _RegisterPageState extends State<RegisterPage> {
         password: _passwordController.text,
       );
 
-  String? validateEmail(String? value) => isEmail(value.toString())
-      ? AppLocalizations.of(context)!.emailValidator
-      : null;
+  String? validateEmail(String? value) =>
+      isEmail(value.toString()) ? "Invalid email format!" : null;
 
   String? validatePassword(String? value) => (value!.length < 8)
-      ? AppLocalizations.of(context)!.passwordValidator
+      ? "Password must contains minimum 8 characters"
       : null;
 }

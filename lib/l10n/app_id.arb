@@ -20,9 +20,28 @@
   "titleAddStory": "Tambah Cerita",
   "titleListStory": "Daftar Cerita",
   "titleDetailStory": "Detail Cerita",
-  "createAccount": "Belum punya akun?",
   "createStory": "Buat Cerita",
   "selectImage": "Pilih Gambar",
-  "emailValidator": "Format email tidak valid",
-  "passwordValidator": "Password harus minimal 8 karakter"
+  "addLocationButton": "Tambah Lokasi",
+  "locationLatLng": "Lokasi yang dipilih: ({lat};{lng})",
+  "@locationLatLng": {
+    "placeholders": {
+      "lat": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      },
+      "lng": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      }
+    }
+  },
+  "permissionAllowLocation": "Izinkan permintaan lokasi untuk mengaktifkan fitur lokasi saat ini",
+  "permissionDeniedLocation":"Permintaan mengaktifkan lokasi tidak disetujui"
 }

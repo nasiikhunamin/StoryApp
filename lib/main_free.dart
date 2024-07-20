@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:storyapp/data/api/api_services.dart';
+import 'package:storyapp/data/preferences/token_preferences.dart';
 import 'package:storyapp/provider/add_story_provider.dart';
 import 'package:storyapp/provider/localization_provider.dart';
 import 'package:storyapp/provider/login_provider.dart';
@@ -8,8 +10,9 @@ import 'package:storyapp/provider/register_provider.dart';
 import 'package:storyapp/route/location_page_manager.dart';
 import 'package:storyapp/route/page_manager.dart';
 import 'package:storyapp/route/router_delegate.dart';
-import 'data/api/api_services.dart';
-import 'data/preferences/token_preferences.dart';
+import 'package:storyapp/utils/flavor_config.dart';
+import 'package:storyapp/utils/flavor_value.dart';
+import 'package:storyapp/utils/helper.dart';
 import 'export.dart';
 
 void main() {
@@ -18,7 +21,16 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  _initFlavor();
   runApp(const MyApp());
+}
+
+_initFlavor() {
+  FlavorConfig(
+      flavor: FlavorType.free,
+      value: const FlavorValue(
+        isLocationEnable: false,
+      ));
 }
 
 class MyApp extends StatefulWidget {

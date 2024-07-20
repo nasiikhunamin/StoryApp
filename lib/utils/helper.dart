@@ -5,3 +5,5 @@ afterBuild(VoidCallback callback) {
     callback.call();
   });
 }
+
+enum FlavorType { free, paid }

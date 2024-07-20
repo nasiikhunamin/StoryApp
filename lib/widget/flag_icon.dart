@@ -11,7 +11,7 @@ class FlagIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
-        icon: const Icon(Icons.flag, color: Colors.black),
+        icon: const Icon(Icons.flag_outlined, color: Colors.black),
         items: AppLocalizations.supportedLocales.map((Locale locale) {
           final flag = Localization.getFlag(locale.languageCode);
           return DropdownMenuItem(

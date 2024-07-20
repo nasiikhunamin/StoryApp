@@ -6,11 +6,13 @@ import 'package:storyapp/utils/helper.dart';
 import 'package:storyapp/utils/result_state.dart';
 import 'package:storyapp/widget/costume_button.dart';
 import 'package:storyapp/export.dart';
+import 'package:storyapp/widget/snackbar_custom.dart';
 import 'package:validators/validators.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback onLoginSucces;
   final VoidCallback onRegisterClicked;
+
   const LoginPage({
     super.key,
     required this.onLoginSucces,
@@ -41,14 +43,14 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Center(
                 child: Image.asset(
-                  'assets/login.png',
+                  "assets/login.png",
                   width: 200,
                 ),
               ),
               const SizedBox(height: 50),
-              Text(
-                AppLocalizations.of(context)!.buttonLogin,
-                style: const TextStyle(fontSize: 28),
+              const Text(
+                "Login",
+                style: TextStyle(fontSize: 28),
               ),
               Padding(
                 padding:
@@ -120,28 +122,32 @@ class _LoginPageState extends State<LoginPage> {
                 builder: (context, provider, _) {
                   _handleLoginState(provider);
 
-                  return CustomButton(
-                    isLoading: (provider.loginState == ResultState.loading),
-                    onPressed: () => _onLoginPressed(provider),
-                    text: AppLocalizations.of(context)!.buttonLogin,
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: CustomButton(
+                      isLoading: (provider.loginState == ResultState.loading),
+                      onPressed: () => _onLoginPressed(provider),
+                      text: "Login",
+                    ),
                   );
                 },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    // 'Don\'t have a account?',
-                    AppLocalizations.of(context)!.createAccount,
-                    style: const TextStyle(
+                  const Text(
+                    "Don't have a account?",
+                    style: TextStyle(
                         color: Color.fromARGB(237, 146, 143, 143),
                         fontWeight: FontWeight.w600),
                   ),
                   TextButton(
                     onPressed: widget.onRegisterClicked,
-                    child: Text(
-                      AppLocalizations.of(context)!.buttonRegister,
-                      style: const TextStyle(color: Color(0xff32323C)),
+                    child: const Text(
+                      "SignUp",
+                      style: TextStyle(
+                        color: Colors.orangeAccent,
+                      ),
                     ),
                   ),
                 ],
@@ -163,13 +169,12 @@ class _LoginPageState extends State<LoginPage> {
     switch (provider.loginState) {
       case ResultState.hasData:
         afterBuild(widget.onLoginSucces);
+        showCustomSnackbar(context, provider.loginMessage);
         break;
       case ResultState.noData:
+        showCustomSnackbar(context, provider.loginMessage);
+        break;
       case ResultState.error:
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(provider.loginMessage)));
-        });
         break;
       default:
         break;
@@ -181,11 +186,10 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
 
-  String? validateEmail(String? value) => isEmail(value.toString())
-      ? AppLocalizations.of(context)!.emailValidator
-      : null;
+  String? validateEmail(String? value) =>
+      isEmail(value.toString()) ? "Invalid email fromat" : null;
 
   String? validatePassword(String? value) => (value!.length < 8)
-      ? AppLocalizations.of(context)!.passwordValidator
+      ? "Password must contains minimum 8 characters"
       : null;
 }

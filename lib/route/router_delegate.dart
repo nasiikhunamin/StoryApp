@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:storyapp/data/preferences/token_preferences.dart';
+import 'package:storyapp/schreen/add_location_page.dart';
 import 'package:storyapp/schreen/add_story_page.dart';
 import 'package:storyapp/schreen/detail_story_page.dart';
 import 'package:storyapp/schreen/list_story_page.dart';
 import 'package:storyapp/schreen/login_page.dart';
 import 'package:storyapp/schreen/register_page.dart';
-import 'package:storyapp/splash_schreen.dart';
+import 'package:storyapp/schreen/splash_schreen.dart';
 
 class MyRouterDelegate extends RouterDelegate
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
@@ -30,6 +31,7 @@ class MyRouterDelegate extends RouterDelegate
   bool? isLoggedIn;
   bool isRegister = false;
   bool isAddStory = false;
+  bool isAddLocation = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +53,13 @@ class MyRouterDelegate extends RouterDelegate
         }
 
         isRegister = false;
-        isAddStory = false;
+        if (!isAddLocation) {
+          isAddStory = false;
+        }
+        isAddLocation = false;
         storyId = null;
         notifyListeners();
+
         return true;
       },
     );
@@ -128,7 +134,18 @@ class MyRouterDelegate extends RouterDelegate
                 isAddStory = false;
                 notifyListeners();
               },
+              onAddLocation: () {
+                isAddLocation = true;
+                notifyListeners();
+              },
             ),
-          )
+          ),
+        if (isAddLocation)
+          MaterialPage(child: AddLocationPage(
+            onSuccesStoryAdded: () {
+              isAddLocation = false;
+              notifyListeners();
+            },
+          ))
       ];
 }

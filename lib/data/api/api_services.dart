@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:storyapp/data/models/detail_story.dart';
 import 'package:storyapp/data/models/login.dart';
@@ -11,6 +12,10 @@ import 'package:storyapp/data/preferences/token_preferences.dart';
 
 class ApiService {
   static const String _baseUrl = "https://story-api.dicoding.dev/v1";
+  Uri _storyEndpoint(int page, int size) =>
+      Uri.parse("$_baseUrl/stories?page=$page&size$size");
+  Uri _mapsEndpoint(LatLng location) => Uri.parse(
+      "https://geocode.maps.co/reverse?lat=${location.latitude}&lon=${location.longitude}");
 
   Future<Login> login(LoginRequest loginRequest) async {
     final response = await http.post(
@@ -41,12 +46,12 @@ class ApiService {
     }
   }
 
-  Future<Stories> getAllStories() async {
+  Future<Stories> getAllStories(int page, int size) async {
     var tokenPreferences = TokenPreferences();
     var token = await tokenPreferences.getToken();
 
     final response = await http.get(
-      Uri.parse("$_baseUrl/stories"),
+      _storyEndpoint(page, size),
       headers: {
         'Authorization': 'Bearer $token',
       },
@@ -100,13 +105,26 @@ class ApiService {
       request.fields['lon'] = addStory.lon.toString();
     }
 
-    final response = await request.send().timeout(const Duration(seconds: 5));
+    final response = await request.send();
 
     if (response.statusCode == 201) {
       String responseBody = await response.stream.bytesToString();
       return ServerResponse.fromJson(json.decode(responseBody));
     } else {
       throw Exception("${response.statusCode} - Error when upload story");
+    }
+  }
+
+  Future<String> getLocation(LatLng location) async {
+    final response = await http.get(
+      _mapsEndpoint(location),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data["display_name"];
+    } else {
+      throw Exception("${response.statusCode} - Cannot get Location");
     }
   }
 }

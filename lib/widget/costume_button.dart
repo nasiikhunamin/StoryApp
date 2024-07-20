@@ -20,6 +20,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: (!isLoading) ? onPressed : null,
+      style: ElevatedButton.styleFrom(
+          fixedSize: Size(width, height), backgroundColor: Colors.orangeAccent),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,10 +34,12 @@ class CustomButton extends StatelessWidget {
             ),
             const SizedBox(width: 8),
           ],
-          Text(text),
+          Text(
+            text,
+            style: const TextStyle(fontSize: 17, color: Colors.white),
+          ),
         ],
       ),
-      style: ElevatedButton.styleFrom(fixedSize: Size(width, height)),
     );
   }
 }

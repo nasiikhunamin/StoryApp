@@ -11,9 +11,28 @@
   "titleAddStory": "Add Story",
   "titleListStory": "List Story",
   "titleDetailStory": "Detail Story",
-  "createAccount": "Don't have a account?",
   "createStory": "Create Story",
   "selectImage": "Select Image",
-  "emailValidator": "Invalid email format",
-  "passwordValidator": "Password must contains minimum 8 characters"
+  "addLocationButton": "Add Location",
+  "locationLatLng": "Selected location: ({lat};{lng})",
+  "@locationLatLng": {
+    "placeholders": {
+      "lat": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      },
+      "lng": {
+        "type": "double",
+        "format": "decimalPattern",
+        "optionalParameters": {
+          "decimalDigits": 3
+        }
+      }
+    }
+  },
+  "permissionAllowLocation": "Allow location request to enable location features at the moment",
+  "permissionDeniedLocation":"Location request denied"
 }

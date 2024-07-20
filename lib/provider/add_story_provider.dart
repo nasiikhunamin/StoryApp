@@ -26,11 +26,11 @@ class AddStoryProvider extends ChangeNotifier {
 
       if (detailStoryResult.error == true) {
         _state = ResultState.error;
-        _message = detailStoryResult.message ?? "Error when uploading";
+        _message = detailStoryResult.message ?? "Error uploading story";
       } else {
         _state = ResultState.hasData;
 
-        _message = detailStoryResult.message ?? "Succes upload story";
+        _message = detailStoryResult.message ?? "Story uploaded";
       }
     } on SocketException {
       _state = ResultState.error;
